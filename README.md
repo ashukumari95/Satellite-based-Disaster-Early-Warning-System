@@ -55,9 +55,8 @@ Communities and authorities require an **early warning system** that can visuali
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Clone the Repository
+1️⃣ Clone the Repository
 
-```bash
 git clone https://github.com/ashukumari95/Satellite-based-Disaster-Early-Warning-System.git
 cd Satellite-based-Disaster-Early-Warning-System
 
@@ -82,8 +81,7 @@ npm run dev
 Frontend will run on:
 http://localhost:5173
 
-
-🧠 Architecture Overview
+## 🧠 Architecture Overview
 
 Frontend consumes REST APIs exposed by the backend
 
@@ -93,7 +91,7 @@ MongoDB stores disaster logs and user alert configurations
 
 JWT secures protected routes and admin functionalities
 
-🗺️ Roadmap
+ ## 🗺️ Roadmap
 
  Integrate real satellite and weather public APIs
 
@@ -106,3 +104,4 @@ JWT secures protected routes and admin functionalities
  Multilingual alerts for wider accessibility
 
  Role-based admin panel for disaster management authorities
+
