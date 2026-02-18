@@ -41,7 +41,10 @@ const Login = () => {
 
     } catch (err) {
       // यदि कोई त्रुटि होती है, तो उसे दिखाएँ
-      setError(err.message || 'Login failed. Please check your credentials.');
+      setError(
+        err.response?.data?.message ||
+        'Login failed. Please check your credentials.'
+      );
       console.error(err);
     } finally {
       setIsLoading(false); // लोडिंग समाप्त करें

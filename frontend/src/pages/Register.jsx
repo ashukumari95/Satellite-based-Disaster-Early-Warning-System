@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import Tilt from 'react-parallax-tilt';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import api from '../services/api';
 import heroImg from '../assets/hero.png';
 
 const Register = () => {
@@ -50,11 +50,7 @@ const Register = () => {
       };
 
       // API call me data aur config, dono bhejein
-      const response = await axios.post(
-        'http://localhost:5000/api/auth/register',
-        userData,
-        config
-      );
+      const response = await api.post('/auth/register', userData, config);
 
       if (response.data && response.data.token) {
         localStorage.setItem('token', response.data.token);

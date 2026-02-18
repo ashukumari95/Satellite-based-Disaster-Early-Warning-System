@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import MapSection from '../components/MapSection'; // Your component that shows the map
 
 const Map = () => {
@@ -26,7 +26,7 @@ const Map = () => {
       setError('');
       try {
         // Call your backend API
-        const response = await axios.get(`http://localhost:5000/api/warnings?location=${location}`);
+       await api.get(`/warnings?location=${location}`);
         setMapData(response.data); // Save the data from the backend
       } catch (err) {
         console.error("Failed to fetch map data:", err);
