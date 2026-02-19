@@ -1,8 +1,11 @@
+// --- LOAD ENV FIRST (before any module that needs process.env) ---
+const dotenv = require('dotenv');
+dotenv.config();
+
 // --- CORE MODULES ---
 const http = require('http');
 const path = require('path');
 const express = require('express');
-const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
 
@@ -17,14 +20,12 @@ const mainRouter = require('./routes');
 // -------------------------------------------------
 // INITIAL SETUP
 // -------------------------------------------------
-dotenv.config();
 const app = express();
 
 // -------------------------------------------------
 // MIDDLEWARES (Sahi Order yahan zaroori hai)
 // -------------------------------------------------
 app.use(cors());
-
 // --- YEH LINE ROUTES SE PEHLE HONI CHAHIYE ---
 app.use(express.json()); // JSON data ko samajhne ke liye
 
@@ -58,7 +59,7 @@ const startServer = async () => {
     // 2. Jab connection ho jaaye, tabhi server ko chalu karein
     server.listen(PORT, () => {
       logger.info(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-      
+
       // 3. Server chalu hone ke baad, socket aur jobs shuru karein
       initSocket(server);
       cronJobs.startFetching();

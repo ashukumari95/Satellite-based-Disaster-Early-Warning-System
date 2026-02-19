@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios'; // Import axios
 
 const AlertDetailPage = () => {
-  const { alertType } = useParams(); 
+  const { alertType } = useParams();
   const [searchParams] = useSearchParams();
   const location = searchParams.get('location');
 
@@ -24,8 +24,8 @@ const AlertDetailPage = () => {
       setError('');
       try {
         // Call your new, unified backend endpoint
-        const response = await axios.get(`/api/detailed-alerts/${alertType}?location=${location}`);
-        
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/detailed-alerts/${alertType}?location=${location}`);
+
         if (response.data.success) {
           setAlertData(response.data.data);
         } else {
@@ -47,7 +47,7 @@ const AlertDetailPage = () => {
   if (loading) {
     return <div className="text-center p-10">Loading detailed report for {location}...</div>;
   }
-  
+
   if (error) {
     return <div className="text-center p-10 text-red-500">{error}</div>;
   }
@@ -61,7 +61,7 @@ const AlertDetailPage = () => {
       <div className="bg-white rounded-lg p-8 shadow-lg">
         <h1 className="text-3xl font-bold mb-2 text-blue-600">{alertData.title}</h1>
         {location && <p className="text-xl text-gray-700 mb-6">Location: {location}</p>}
-        
+
         {/* We can now display any data that comes from the backend */}
         <div className="mb-4">
           <p className="font-semibold">Details:</p>

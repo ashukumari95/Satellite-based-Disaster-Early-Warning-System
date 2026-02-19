@@ -26,7 +26,7 @@ const Map = () => {
       setError('');
       try {
         // Call your backend API
-        const response = await axios.get(`http://localhost:5000/api/warnings?location=${location}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/warnings?location=${location}`);
         setMapData(response.data); // Save the data from the backend
       } catch (err) {
         console.error("Failed to fetch map data:", err);
